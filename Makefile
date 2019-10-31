@@ -1,3 +1,4 @@
+.PHONY: run
 run: UI.lua love
 	./love .
 
