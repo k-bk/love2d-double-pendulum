@@ -1,7 +1,7 @@
 # love2d-double-pendulum
 Double pendulum simulation solved using Runge-Kutta method.
 
-Using a library math-rungekutta by peterbillam.
+Using a library `math-rungekutta` by `peterbillam`.
 https://luarocks.org/modules/peterbillam/math-rungekutta
 
 ## Running
