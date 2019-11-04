@@ -77,24 +77,6 @@ function love.load ()
 
     love.graphics.setBackgroundColor(1,1,1)
 
-    UI:addScene( 20, 20 )
-    UI:horizontal(
-        UI:addButton( "Start", startSimulation ),
-        UI:addButton( "Pause", pauseSimulation ),
-        UI:addButton( "Reset", resetSimulation )
-    )
-    UI:vertical(
-        UI:addLabel {""},
-        UI:addLabel {"alpha 1"},
-        UI:addSlider( 0, 360, a1 ),
-        UI:addLabel {"alpha 2"},
-        UI:addSlider( 0, 360, a2 ),
-        UI:addLabel {"mass"},
-        UI:addSlider( 0.1, 3, initU ),
-        UI:addLabel {"animation speed"},
-        UI:addSlider( 0.5, 3, initSpeed )
-    )
-    
 end
 
 
@@ -108,6 +90,22 @@ function love.update ( dt )
 end
 
 function love.draw ()
+
+    UI.draw { x = 20, y = 20,
+        UI.horizontal {
+            UI.button( "Start", startSimulation ),
+            UI.button( "Pause", pauseSimulation ),
+            UI.button( "Reset", resetSimulation ),
+        },
+        UI.label {"alpha 1"},
+        UI.slider( 0, 360, a1 ),
+        UI.label {"alpha 2"},
+        UI.slider( 0, 360, a2 ),
+        UI.label {"mass"},
+        UI.slider( 0.1, 3, initU ),
+        UI.label {"animation speed"},
+        UI.slider( 0.5, 3, initSpeed ),
+    }
 
     local r,g,b,a = love.graphics.getColor()
 
@@ -132,6 +130,7 @@ function love.draw ()
     love.graphics.line( x0, y0, x1, y1 )
     love.graphics.line( x1, y1, x2, y2 )
 
+    local u = initU[1]
     love.graphics.setColor(0.5,0.5,0.5)
     love.graphics.circle( "fill", x0, y0, 5 )
     love.graphics.circle( "fill", x1, y1, radius * 1 )
@@ -141,10 +140,6 @@ function love.draw ()
     love.graphics.circle( "fill", x2, y2, radius * u ^ (1/3) )
     love.graphics.setColor(0,0,0)
     love.graphics.circle( "line", x2, y2, radius * u ^ (1/3) )
-
-    love.graphics.setColor(r,g,b,a)
-
-    UI:draw()
 
     love.graphics.setCanvas()
     love.graphics.draw(trace)
@@ -160,16 +155,16 @@ end
 
 function love.mousepressed ( x, y, button )
     if button == 1 then
-        UI:mousePressed({x = x, y = y})
+        UI.mousepressed {x = x, y = y}
     end
 end
 
 function love.mousereleased ( x, y, button )
     if button == 1 then
-        UI:mouseReleased({x = x, y = y})
+        UI.mousereleased {x = x, y = y}
     end
 end
 
 function love.mousemoved ( x, y )
-    UI:mouseMoved({x = x, y = y})
+    UI.mousemoved {x = x, y = y}
 end
