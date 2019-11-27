@@ -1,5 +1,4 @@
-# love2d-double-pendulum
-[![love2d version](https://img.shields.io/badge/L%C3%96VE-11.3-%23e74999.svg)](https://love2d.org)
+# love2d-double-pendulum [![love2d version](https://img.shields.io/badge/L%C3%96VE-11.3-%23e74999.svg)](https://love2d.org)
 
 Double pendulum simulation solved using Runge-Kutta method.
 
